@@ -1,0 +1,2 @@
+# go-gen
+Golang Generics
