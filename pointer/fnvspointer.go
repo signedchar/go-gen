@@ -2,6 +2,12 @@ package main
 
 import "fmt"
 
+/*
+	Demostration pointers vs no pointers in functions and methods.
+	The normal functions or methods not change the input value
+	The pointer functions or pointer methods, change the input value
+*/
+
 type Square struct {
 	Width  float64
 	Height float64
@@ -18,8 +24,15 @@ func addeight(s *Square, num float64) {
 	s.Width = s.Width*2 + num
 }
 
+// normal method
+func (s Square) mtUpdateHW(num float64) Square {
+	s.Height = s.Height * num
+	s.Width = s.Width * num
+	return s
+}
+
 // pointer method
-func (s *Square) heightNew(num float64) {
+func (s *Square) mtpUpdateHW(num float64) {
 	s.Height = s.Height * num
 	s.Width = s.Width * num
 }
@@ -27,13 +40,21 @@ func (s *Square) heightNew(num float64) {
 func main() {
 	square := Square{4, 4}
 
-	fmt.Printf("Square addseven, %.2f, square: %v\n", addseven(square.Height), square) //using normal fn
-	square.heightNew(2.0)                                                              //pointer method
-	fmt.Printf("The new square: %v\n", square)                                         //printing the change
+	fmt.Println()
+	fmt.Println("Pointer demostration for normal functions/methods and pointer functions/methods")
+	fmt.Println()
+
+	fmt.Printf("Printing square: %v\n", square)
+	fmt.Printf("Using normal function for square, %.2f, square: %v\n", addseven(square.Height), square) // using normal fn
+	addeight(&square, 5)
+	fmt.Printf("Printing square after apply pointer function: %v\n", square)
+
+	fmt.Println("")
 
 	anotherSquare := Square{7, 7}
 	fmt.Printf("Printing anotherSquare: %v\n", anotherSquare)
-	addeight(&anotherSquare, 5) //applying pointer fn
+	fmt.Printf("Using normal method for: %v, anotherSquare: %v\n", anotherSquare.mtUpdateHW(2), anotherSquare) // normal method
 
-	fmt.Printf("The new anotherSquare: %v\n", anotherSquare)
+	anotherSquare.mtpUpdateHW(2)                                                  // pointer method
+	fmt.Printf("Printing square after apply pointer method: %v\n", anotherSquare) //printing the change
 }
