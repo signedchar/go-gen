@@ -19,7 +19,7 @@ func addseven(num float64) float64 {
 }
 
 // pointer function
-func addeight(s *Square, num float64) {
+func ptrfn(s *Square, num float64) {
 	s.Height = s.Height*num + 1
 	s.Width = s.Width*2 + num
 }
@@ -46,7 +46,7 @@ func main() {
 
 	fmt.Printf("Printing square: %v\n", square)
 	fmt.Printf("Using normal function for square, %.2f, square: %v\n", addseven(square.Height), square) // using normal fn
-	addeight(&square, 5)
+	ptrfn(&square, 5)
 	fmt.Printf("Printing square after apply pointer function: %v\n", square)
 
 	fmt.Println("")
