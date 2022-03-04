@@ -75,14 +75,5 @@ func primes_factors(num int) []int {
 }
 
 func main() {
-	/*
-		fmt.Println(prime_p((600851475143)))
-		fmt.Println(primes_factors(13195))
-		fmt.Println(primes_factors(12))
-		fmt.Println(primes_factors(18))
-		fmt.Println(primes_factors(24))
-		fmt.Println(primes_factors(20))
-		fmt.Println(primes_factors(36))
-	*/
 	fmt.Println(primes_factors(600851475143))
 }
