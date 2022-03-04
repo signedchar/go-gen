@@ -26,11 +26,25 @@ func prime_p(n int) bool {
 	return lbool
 }
 
-func main() {
-	//fmt.Println(prime_p((600851475143)))
+// Return the primes from 2 to `num`
+func primes(num int) []int {
+	var lprimes []int
 
-	for i := 0; i < 550; i++ {
-		fmt.Printf("%d: %t\n", i, prime_p(i))
+	for i := 2; i < num; i++ {
+		if prime_p(i) {
+			lprimes = append(lprimes, i)
+		}
 	}
+	return lprimes
+}
+
+func main() {
+	fmt.Println(prime_p((600851475143)))
+	fmt.Println(primes(100))
+	/*
+		for i := 0; i < 550; i++ {
+			fmt.Printf("%d: %t\n", i, prime_p(i))
+		}
+	*/
 
 }
