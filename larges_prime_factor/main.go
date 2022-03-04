@@ -38,13 +38,52 @@ func primes(num int) []int {
 	return lprimes
 }
 
-func main() {
-	fmt.Println(prime_p((600851475143)))
-	fmt.Println(primes(100))
-	/*
-		for i := 0; i < 550; i++ {
-			fmt.Printf("%d: %t\n", i, prime_p(i))
-		}
-	*/
+// Calculate the summatory of a list of numbers.
+func sum_reduce(lst []int) int {
+	var acc int
 
+	for i := 0; i < len(lst); i++ {
+		acc += lst[i]
+	}
+	return acc
+}
+
+// Calculate the prime factors of a number
+func primes_factors(num int) []int {
+	lprimes := primes(num)
+	orign := num
+	var fcts []int
+
+	for i := 0; i < len(lprimes); i++ {
+		if num%(lprimes[i]) == 0 {
+			fcts = append(fcts, lprimes[i])
+			num = num / lprimes[i]
+			i -= 1
+			continue
+		}
+
+		if num%(lprimes[i]) != 0 {
+			if sum_reduce(fcts) == orign {
+				break
+			} else {
+				continue
+			}
+		}
+	}
+	return fcts
+}
+
+func main() {
+	/*
+		fmt.Println(prime_p((600851475143)))
+		fmt.Println(primes(100))
+		fmt.Println(sum_reduce(primes(20)))
+		fmt.Println(primes_factors(13195))
+		fmt.Println(primes_factors(12))
+		fmt.Println(primes_factors(18))
+		fmt.Println(primes_factors(24))
+		fmt.Println(primes_factors(20))
+		fmt.Println(primes_factors(36))
+	*/
+	fmt.Println(primes_factors(600851475143))
 }
