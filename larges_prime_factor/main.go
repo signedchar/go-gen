@@ -26,11 +26,12 @@ func prime_p(n int) bool {
 	return lbool
 }
 
-// Return the primes from 2 to `num`
-func primes(num int) []int {
+// Return a segment of primes from "start" to "stop"
+// it's not necessary calculate all the prime numbers.
+func seg_primes(start, stop int) []int {
 	var lprimes []int
 
-	for i := 2; i < num; i++ {
+	for i := start; i < stop; i++ {
 		if prime_p(i) {
 			lprimes = append(lprimes, i)
 		}
@@ -50,7 +51,7 @@ func sum_reduce(lst []int) int {
 
 // Calculate the prime factors of a number
 func primes_factors(num int) []int {
-	lprimes := primes(num)
+	lprimes := seg_primes(2, 10000)
 	orign := num
 	var fcts []int
 
@@ -76,8 +77,6 @@ func primes_factors(num int) []int {
 func main() {
 	/*
 		fmt.Println(prime_p((600851475143)))
-		fmt.Println(primes(100))
-		fmt.Println(sum_reduce(primes(20)))
 		fmt.Println(primes_factors(13195))
 		fmt.Println(primes_factors(12))
 		fmt.Println(primes_factors(18))
