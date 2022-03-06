@@ -73,6 +73,21 @@ func pals() []int {
 	return lpals
 }
 
+func maxl(lst []int) int {
+	max_tmp := lst[0]
+
+	for i := 1; i < len(lst); i++ {
+		if max_tmp < lst[i] {
+			max_tmp = lst[i]
+		} else {
+			continue
+		}
+	}
+
+	return max_tmp
+}
+
 func main() {
-	fmt.Println(pals())
+	palindromes := pals()
+	fmt.Printf("The largest palindrome product is: %d\n", maxl(palindromes))
 }
