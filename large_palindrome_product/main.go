@@ -5,6 +5,11 @@ import (
 	"strconv"
 )
 
+type palindrome struct {
+	prd [2]int
+	r   int
+}
+
 // Verify if "len(str)" is equal to "lng"
 func pal_str_p(str string, lng int) bool {
 	var lbool bool
@@ -48,6 +53,40 @@ func pal5(str string) bool {
 	return lbool
 }
 
+func pals() []palindrome {
+	var lpals []palindrome
+	var ij [2]int
+	var pal_tmp palindrome
+
+	for i := 999; i >= 100; i-- {
+		for j := 999; j >= 100; j-- {
+			str := strconv.Itoa(i * j)
+
+			if pal6(str) {
+				//string to integer == stoi
+				stoi, _ := strconv.Atoi(str)
+				ij = [2]int{i, j}
+				pal_tmp.prd = ij
+				pal_tmp.r = stoi
+				lpals = append(lpals, pal_tmp)
+				break
+			}
+
+			if pal5(str) {
+				stoi, _ := strconv.Atoi(str)
+				ij = [2]int{i, j}
+				pal_tmp.prd = ij
+				pal_tmp.r = stoi
+				lpals = append(lpals, pal_tmp)
+				break
+			}
+		}
+	}
+
+	return lpals
+}
+
+/*
 // Return a list of palindromes. The numbers have the length 6 and 5.
 func pals() []int {
 	var lpals []int
@@ -71,7 +110,8 @@ func pals() []int {
 	}
 
 	return lpals
-}
+        }
+*/
 
 func maxl(lst []int) int {
 	max_tmp := lst[0]
@@ -89,5 +129,6 @@ func maxl(lst []int) int {
 
 func main() {
 	palindromes := pals()
-	fmt.Printf("The largest palindrome product is: %d\n", maxl(palindromes))
+	fmt.Println(palindromes)
+	//fmt.Printf("The largest palindrome product is: %d\n", maxl(palindromes))
 }
