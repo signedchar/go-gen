@@ -86,49 +86,27 @@ func pals() []palindrome {
 	return lpals
 }
 
-/*
-// Return a list of palindromes. The numbers have the length 6 and 5.
-func pals() []int {
-	var lpals []int
-	
-	for i:= 999; i >= 100; i-- {
-		for j := 999; j >= 100; j-- {
-			str := strconv.Itoa(i * j)
-
-			if pal6(str) {
-				stoi, _ := strconv.Atoi(str)
-				lpals = append(lpals, stoi)
-				break
-			}
-
-			if pal5(str) {
-				stoi, _ := strconv.Atoi(str)
-				lpals = append(lpals, stoi)
-				break
-			}
-		}
-	}
-
-	return lpals
-        }
-*/
-
-func maxl(lst []int) int {
-	max_tmp := lst[0]
+func maxl(lst []palindrome) palindrome {
+	var pal_tmp palindrome
+	max_tmp := lst[0].r
 
 	for i := 1; i < len(lst); i++ {
-		if max_tmp < lst[i] {
-			max_tmp = lst[i]
+		if max_tmp < lst[i].r {
+			max_tmp = lst[i].r
+			pal_tmp = lst[i]
 		} else {
 			continue
 		}
+		
 	}
 
-	return max_tmp
+	return pal_tmp
 }
-
+   
 func main() {
 	palindromes := pals()
-	fmt.Println(palindromes)
-	//fmt.Printf("The largest palindrome product is: %d\n", maxl(palindromes))
+	pal := maxl(palindromes)
+	x := pal.prd[0]
+	y := pal.prd[1]
+	fmt.Printf("The largest palindrome made from the product of 3 digits numbers is: %d = %d x %d\n", pal.r, x, y)
 }
