@@ -19,3 +19,9 @@ func Testmult(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestSumMultsOfThreeAndFive(t *testing.T) {
+	if smult(10) != 23 {
+		t.Fail()
+	}
+}
