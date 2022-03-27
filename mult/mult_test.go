@@ -19,23 +19,3 @@ func Testmult(t *testing.T) {
 		t.Fail()
 	}
 }
-
-func Testmult3(t *testing.T) {
-	if mult3(3) != true {
-		t.Fail()
-	}
-
-	if mult3(5) == true {
-		t.Fail()
-	}
-}
-
-func Testmult5(t *testing.T) {
-	if mult5(5) != true {
-		t.Fail()
-	}
-
-	if mult5(3) == true {
-		t.Fail()
-	}
-}
