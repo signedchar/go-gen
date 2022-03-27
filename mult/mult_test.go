@@ -2,7 +2,7 @@ package mult
 
 import "testing"
 
-func Testmult(t *Testing.T) {
+func Testmult(t *testing.T) {
 	if mult(3, 3) != true {
 		t.Fail()
 	}
