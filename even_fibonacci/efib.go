@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func fib(x int) int {
 	if x == 0 {
 		return 0
@@ -23,15 +25,25 @@ func evenp(x int) bool {
 }
 
 func sumEvenFib(x int) int {
+	// ifib == internal fibonacci
 	var acc int
 	var ifib int
 	
 	for i := 0; i <= x; i++ {
 		ifib = fib(i)
-		if evenp(ifib) && ifib < 4000000 {
+		if ifib >= 4000000 {
+			break
+		}
+
+		if evenp(ifib) {
 			acc += ifib
 		}
 	}
 
 	return acc
+}
+
+
+func main() {
+	fmt.Println(sumEvenFib(50000))
 }
