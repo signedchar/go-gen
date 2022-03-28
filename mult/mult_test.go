@@ -1,4 +1,4 @@
-package mult
+package main
 
 import "testing"
 

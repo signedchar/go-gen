@@ -1,4 +1,6 @@
-package mult
+package main
+
+import "fmt"
 
 func mult(num, div int) bool {
 	var i bool
@@ -22,4 +24,8 @@ func smult(limit int) int {
 	}
 
 	return count
+}
+
+func main() {
+	fmt.Printf("The Sum of the first 1000 multiples of 3 and 5: %d\n", smult(1000))
 }
