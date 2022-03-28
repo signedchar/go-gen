@@ -21,3 +21,17 @@ func evenp(x int) bool {
 
 	return i
 }
+
+func sumEvenFib(x int) int {
+	var acc int
+	var ifib int
+	
+	for i := 0; i <= x; i++ {
+		ifib = fib(i)
+		if evenp(ifib) && ifib < 4000000 {
+			acc += ifib
+		}
+	}
+
+	return acc
+}
